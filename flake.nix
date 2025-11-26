@@ -21,7 +21,6 @@
       # programs.zsh.enableFzfCompletion = true;
       # programs.zsh.enableFzfGit = true;
       environment.shells = [ pkgs.zsh ];
-      environment.loginShell = pkgs.zsh;
 
       # Necessary for using flakes on this system.
       nix.settings.experimental-features = "nix-command flakes";
