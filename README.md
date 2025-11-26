@@ -53,6 +53,15 @@ Example output:
  - nixpkgs: `/nix/store/2f33dl1xv3wcw07qw3izsj3aw4ws9qch-source`
 ```
 
+## Initial example
+
+https://github.com/nix-darwin/nix-darwin/blob/master/modules/examples/flake/flake.nix
+
+Identify LocalHostName and replace `"simple"` with it:
+```
+scutil --get LocalHostName
+```
+
 ## First run
 
 ## Update run
