@@ -17,7 +17,7 @@ To simplify file editing, create a shared folder in UTM:
 Create a symlink to the shared folder:
 
 ```
- ln -s /Volumes/My\ Shared\ Files/nix ~/nix
+ln -s /Volumes/My\ Shared\ Files/nix /etc/nix-darwin
 ```
 
 ## Installation
@@ -64,7 +64,25 @@ scutil --get LocalHostName
 
 ## First run
 
+```
+sergej@sergejs-Virtual-Machine nix % sudo nix run nix-darwin/master#darwin-rebuild -- switch --flake ~/nix/flake.nix
+Password:
+warning: $HOME ('/Users/sergej') is not owned by you, falling back to the one defined in the 'passwd' file ('/var/root')
+building the system configuration...
+warning: Path '/Users/sergej/nix/flake.nix' should point at the directory containing the 'flake.nix' file, not the file itself. Pretending that you meant '/Users/sergej/nix'
+warning: creating lock file "/Users/sergej/nix/flake.lock":
+```
+
+You need to add `--flake ~/nix/flake.nix` as I don't use the `/etc/nix-darwin` directly.
+
+Besides, it doesn't want to have the file but the folder with the file.
+
+
 ## Update run
+
+```
+sudo darwin-rebuild switch --flake ~/nix
+```
 
 ## Recreate on a new machine
 
@@ -73,3 +91,14 @@ scutil --get LocalHostName
 - https://github.com/nix-darwin/nix-darwin
 - https://github.com/zmre/mac-nix-simple-example
 -
+
+## Error handling
+- https://github.com/nix-darwin/nix-darwin/issues/1360#issuecomment-2697423770
+- https://github.com/nix-darwin/nix-darwin/issues/1330#issuecomment-2654133042
+- https://github.com/NixOS/nix/issues/10202#issuecomment-2451952174
+
+## Helpful commands
+
+```
+nix-shell -p git
+```
